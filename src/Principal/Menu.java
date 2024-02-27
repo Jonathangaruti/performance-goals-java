@@ -1,15 +1,12 @@
 package Principal;
 
+import java.io.IOException;
 import java.util.InputMismatchException;
 
 import java.util.Scanner;
 
 import Conta.util.cores;
-import repository.FiguresRepository;
-
-import Model.Figures;
-
-import Model.ListaFigures;
+import Controller.ProdutosController;
 
 public class Menu {
 
@@ -17,10 +14,11 @@ public class Menu {
 
 	public static void main(String[] args) {
 		
-
-		int opcao, id, quantidade;
-		float valor;
-		String nome;
+		ProdutosController figures = new ProdutosController();
+		
+		Scanner leia = new Scanner(System.in);
+		
+		int opcao, id;
 
 		while (true) {
 
@@ -35,15 +33,13 @@ public class Menu {
 			System.out.println("                ││      ____      │││                           ");
 			System.out.println("                ││     │    │     │││                           ");
 			System.out.println("                ││____ │____│ ____│││                           ");
-			System.out.println("                ╰─────────────────────────────╯                            ");
+			System.out.println("                ╰─────────────────────────────╯                           ");
 			System.out.println("                                                                ");
 			System.out.println("                                                                ");
-			System.out.println("              1 - Buscar action figure por id                   ");
-			System.out.println("              2 - Listar todos os produtos                      ");
-			System.out.println("              4 - Atualizar                                     ");
-			System.out.println("              5 - Comprar                                       ");
-			System.out.println("              6 - Deletar                                       ");
-			System.out.println("              7 - Sair                                          ");
+			System.out.println("              1 - Listar todos os produtos                      ");
+			System.out.println("              2 - Buscar action figure por id                   ");
+			System.out.println("              3 - Comprar                                       ");
+			System.out.println("              4 - Sair                                          ");
 			System.out.println("────────────────────────────────────────────────────────────────");
 			System.out.println("Entre com a opção desejada:                                     ");
 			System.out.println("                                                                " + cores.TEXT_RESET);
@@ -56,37 +52,43 @@ public class Menu {
 				opcao = 0;
 			}
 
-			if (opcao == 6) {
+			if (opcao == 4) {
 				System.out.println(cores.TEXT_WHITE_BOLD + "\nAction Figures - O melhor figure você encontra aqui!");
 				leia.close();
 				System.exit(0);
 			}
 
 			switch (opcao) {
-			case 1:
-				System.out.println("Buscar por action figure por ID - (numeros inteiros)\n\n");
-
-				break;
 			case 2:
-				System.out.println("Listar todos os produtos\n\n");
-				Figures.ListaFigures();
+				System.out.println("Buscar por action figure por ID - (numeros inteiros)\n\n");
+				
+				System.out.println("Digite o ID: (de 1 a 10");
+				id = leia.nextInt();
+				figures.procurarPorId(id);
 
+				keyPress();
 				break;
-
+				
+			case 1:
+				System.out.println("Listar todos os produtos\n\n");
+				figures.listarTodas();
+				
+				
+				keyPress();
+				break;
 
 			case 3:
-				System.out.println("Atualizar lista\n\n");
-
+				System.out.println(cores.TEXT_WHITE_BOLD + "Comprar\n\n");
+				System.out.println("Digite o id da compra: ");
+				id = leia.nextInt();
+			
+				figures.comprar(id);
+				
+				keyPress();
 				break;
+				
+
 			case 4:
-				System.out.println("Comprar\n\n");
-
-				break;
-			case 5:
-				System.out.println("deletar action figure\n\n");
-
-				break;
-			case 6:
 				System.out.println("Sair\n\n");
 				
 				break;
@@ -99,5 +101,20 @@ public class Menu {
 
 		}
 
+	}
+	
+		
+		public static void keyPress() {
+
+			try {
+				System.out.println("\n\nPressione Enter para Continuar...");
+				System.in.read();
+
+			} catch (IOException e) {
+
+				System.out.println("Você pressionou uma tecla diferente de enter!");
+
+			}
+		
 	}
 }

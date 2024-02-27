@@ -6,11 +6,23 @@ import java.util.Scanner;
 
 import Conta.util.cores;
 
+import Model.Figures;
+
 public class Menu {
 
 	public static Scanner leia = new Scanner(System.in);
 
 	public static void main(String[] args) {
+		
+		
+		// Teste de produtos
+		Figures produto1 = new Figures(1, "Figure Luffy", 200.0f);
+		produto1.visualizar();
+		produto1.comprar(1);
+		produto1.visualizar();
+		produto1.produto();
+		produto1.visualizar();
+		
 
 		Scanner leia = new Scanner(System.in);
 
@@ -38,8 +50,9 @@ public class Menu {
 			System.out.println("              2 - Listar todos os produtos                      ");
 			System.out.println("              3 - Buscar action figure por id                   ");
 			System.out.println("              4 - Atualizar                                     ");
-			System.out.println("              5 - Deletar                                       ");
-			System.out.println("              6 - Sair                                          ");
+			System.out.println("              5 - Comprar                                     ");
+			System.out.println("              6 - Deletar                                       ");
+			System.out.println("              7 - Sair                                          ");
 			System.out.println("────────────────────────────────────────────────────────────────");
 			System.out.println("Entre com a opção desejada:                                     ");
 			System.out.println("                                                                " + cores.TEXT_RESET);
@@ -76,10 +89,14 @@ public class Menu {
 
 				break;
 			case 5:
-				System.out.println("deletar action figure\n\n");
+				System.out.println("Comprar\n\n");
 
 				break;
 			case 6:
+				System.out.println("deletar action figure\n\n");
+
+				break;
+			case 7:
 				System.out.println("Sair\n\n");
 				
 				break;

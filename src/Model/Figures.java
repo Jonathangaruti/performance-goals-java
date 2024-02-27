@@ -1,6 +1,6 @@
 package Model;
 
-public class Figures {
+public abstract class Figures {
 
 	private int id;
 	private String nome;
@@ -13,7 +13,9 @@ public class Figures {
 	}
 	
 	public void produto() {
-	    System.out.println("Produto: " + getNome());
+		System.out.println("ID: " + getId());
+        System.out.println("Produto: " + getNome());
+        System.out.println("Valor: " + getValor());
 	}
 
 	public int getId() {
@@ -41,19 +43,21 @@ public class Figures {
 	}
 	
 	public boolean comprar(int id) {
-		if(this.getId() != id) {
-			System.out.println("\n Não encontrado!");
-			return false;
-		}
-			return true;
-			
-		}
-	
-	public void visualizar() {
+        if (this.getId() == id) {
+            System.out.println("\n Produto comprado!");
+            return true;
+        } else {
+            System.out.println("\n Produto não encontrado!");
+            return false;
+        }
+    }
 
-		 String produto = this.nome.equals("produtos") ? "produtos" : "outro";
-	        System.out.println("Produto: " + produto);
-	    }
+    public void visualizar() {
+        System.out.println("ID: " + getId());
+        System.out.println("Produto: " + getNome());
+        System.out.println("Valor: " + getValor());
+    }
 		
 	}
+		
 	

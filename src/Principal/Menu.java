@@ -5,8 +5,11 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import Conta.util.cores;
+import repository.FiguresRepository;
 
 import Model.Figures;
+
+import Model.ListaFigures;
 
 public class Menu {
 
@@ -14,17 +17,6 @@ public class Menu {
 
 	public static void main(String[] args) {
 		
-		
-		// Teste de produtos
-		Figures produto1 = new Figures(1, "Figure Luffy", 200.0f);
-		produto1.visualizar();
-		produto1.comprar(1);
-		produto1.visualizar();
-		produto1.produto();
-		produto1.visualizar();
-		
-
-		Scanner leia = new Scanner(System.in);
 
 		int opcao, id, quantidade;
 		float valor;
@@ -46,11 +38,10 @@ public class Menu {
 			System.out.println("                ╰─────────────────────────────╯                            ");
 			System.out.println("                                                                ");
 			System.out.println("                                                                ");
-			System.out.println("              1 - buscar por nome                               ");
+			System.out.println("              1 - Buscar action figure por id                   ");
 			System.out.println("              2 - Listar todos os produtos                      ");
-			System.out.println("              3 - Buscar action figure por id                   ");
 			System.out.println("              4 - Atualizar                                     ");
-			System.out.println("              5 - Comprar                                     ");
+			System.out.println("              5 - Comprar                                       ");
 			System.out.println("              6 - Deletar                                       ");
 			System.out.println("              7 - Sair                                          ");
 			System.out.println("────────────────────────────────────────────────────────────────");
@@ -73,30 +64,29 @@ public class Menu {
 
 			switch (opcao) {
 			case 1:
-				System.out.println("Buscar por nome\n\n");
+				System.out.println("Buscar por action figure por ID - (numeros inteiros)\n\n");
 
 				break;
 			case 2:
 				System.out.println("Listar todos os produtos\n\n");
+				Figures.ListaFigures();
 
 				break;
+
+
 			case 3:
-				System.out.println("buscar action figure por ID - (numeros inteiros)\n\n");
-
-				break;
-			case 4:
 				System.out.println("Atualizar lista\n\n");
 
 				break;
-			case 5:
+			case 4:
 				System.out.println("Comprar\n\n");
 
 				break;
-			case 6:
+			case 5:
 				System.out.println("deletar action figure\n\n");
 
 				break;
-			case 7:
+			case 6:
 				System.out.println("Sair\n\n");
 				
 				break;

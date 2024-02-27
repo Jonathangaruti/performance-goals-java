@@ -1,5 +1,9 @@
 package Model;
 
+import java.io.IOException;
+
+import conta.util.cores;
+
 public abstract class Figures {
 
 	private int id;
@@ -57,6 +61,21 @@ public abstract class Figures {
         System.out.println("Produto: " + getNome());
         System.out.println("Valor: " + getValor());
     }
+
+
+    public static void keyPress() {
+
+		try {
+			System.out.println("\n\nPressione Enter para Continuar...");
+			System.in.read();
+
+		} catch (IOException e) {
+
+			System.out.println("Você pressionou uma tecla diferente de enter!");
+
+		}
+		
+	}
 		
 	}
 		
